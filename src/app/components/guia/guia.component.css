@@ -1,32 +1,27 @@
-strong {
-  font-weight: bold;
-  color: #252525;
-}
-
-.wrap {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
 .sec-1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  background-image: url("https://img.freepik.com/vetores-gratis/abstrato-moderno-do-vetor-de-gradiente-de-design-branco-de-fundo_343694-2366.jpg?t=st=1739021435~exp=1739025035~hmac=85e4372a0c217b5467994a0f823ffd43e9b62ea54dbd64e0f0a0d4ef3b1889a0&w=1060");
   height: 100vh;
   background-size: cover;
 }
 
 .sec-2 {
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  border-radius: 20px;
   height: 70vh;
+  background-color: #4d4d4d;
+}
+
+.sec-3 {
+  height: 100vh;
+  width: 100%;
+  background-color: #e4a5a5;
+  justify-content: center;
+  align-items: center;
 }
 
 .banner-img {
@@ -67,24 +62,16 @@ strong {
   box-shadow: 0 0 15px rgba(99, 166, 12, 0.79);
 }
 
-.seta {
-  padding-top: 80px;
-}
-
-.seta-img {
-  width: 50px;
-  height: 50px;
-}
-
 .copy-1 {
   width: 1000px;
 }
 
 @media (max-width: 768px) {
   .banner-img {
-    width: 350px;
+    width: 250px;
   }
   .sec-1 {
+    margin-top: 50px;
     width: 100%;
     height: 50vh;
   }
