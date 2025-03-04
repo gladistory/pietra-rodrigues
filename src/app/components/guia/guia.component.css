@@ -2,22 +2,27 @@
   background-color: #efedec;
 }
 
-.section-1 {
-  height: 90vh;
+.wrap {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.section-1 {
+  height: 100vh;
+  width: 80%;
+  display: flex;
+  justify-content: end;
   align-items: center;
   background-image: url("/banner.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
 
 .headline {
-  width: 100%;
+  width: 55%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
 }
@@ -28,18 +33,13 @@
   width: 400px;
   text-decoration: underline;
   border-radius: 25px;
-  color: rgb(137, 101, 55);
-  background-color: rgba(255, 235, 205, 0.535);
+  color: rgb(0, 0, 0);
+  background-color: rgba(255, 242, 94, 0.491);
   height: 35px;
 }
 
 .text-p1 {
   width: 90%;
-}
-
-.text-h1 {
-  width: 90%;
-  font-weight: 650;
 }
 
 .btn-pay {
@@ -66,13 +66,34 @@
 }
 
 @media (max-width: 768px) {
-  .banner-img,
-  .carousel-img {
-    width: 80%;
+  .bold {
+    width: 200px;
+    font-size: 12px;
   }
 
-  .bold {
-    width: 300px;
-    height: 70px;
+  .headline {
+    width: 65%;
+    margin-top: 20px;
+    margin-left: 100px;
+  }
+
+  .section-1 {
+    height: auto;
+    width: 100%;
+    background-size: cover;
+  }
+
+  h1 {
+    font-size: 15px;
+  }
+  p {
+    font-size: 10px;
+  }
+
+  .btn-pay {
+    width: 60%;
+    font-size: 12px;
+    margin-top: 0;
+    margin-bottom: 10px;
   }
 }
