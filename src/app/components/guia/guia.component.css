@@ -4,23 +4,20 @@
 
 .wrap {
   width: 100%;
-  display: flex;
-  justify-content: center;
 }
 
 .section-1 {
-  height: 100vh;
-  width: 80%;
+  height: 90vh;
+  width: 100%;
   display: flex;
-  justify-content: end;
   align-items: center;
-  background-image: url("/banner.png");
+  background-image: url("https://iili.io/3FWpcdX.png");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 }
 
 .headline {
-  width: 55%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,9 +27,7 @@
 .bold {
   text-align: center;
   text-decoration: solid;
-  width: 400px;
   text-decoration: underline;
-  border-radius: 25px;
   color: rgb(0, 0, 0);
   background-color: rgba(255, 242, 94, 0.491);
   height: 35px;
@@ -56,13 +51,66 @@
   margin-top: 26px;
   text-decoration: none;
   display: flex;
-  width: 250px;
+  width: 450px;
   box-shadow: 0 0 15px rgba(44, 44, 44, 0.441);
 }
 .btn-pay:hover {
   background-color: rgb(0, 149, 0);
   transition: 1s ease;
   box-shadow: 0 0 15px rgba(99, 166, 12, 0.79);
+}
+
+.section-2 {
+  width: 100%;
+  display: flex;
+  height: 40vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-call {
+  width: 90%;
+}
+
+.text-call,
+h2 {
+  font-size: 30px;
+  text-align: center;
+}
+
+.sg-call {
+  text-decoration: underline;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: rgba(255, 242, 94, 0.688);
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.section-3 {
+  width: 100%;
+}
+
+.title-3 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.title-3,
+h3 {
+  font-size: 52px;
+  text-decoration: double;
+  text-align: center;
+}
+
+.list-1 {
+  padding: 30px;
+  justify-content: center;
+  display: flex;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -74,7 +122,7 @@
   .headline {
     width: 65%;
     margin-top: 20px;
-    margin-left: 100px;
+    margin-left: 90px;
   }
 
   .section-1 {
@@ -91,9 +139,24 @@
   }
 
   .btn-pay {
-    width: 60%;
-    font-size: 12px;
+    align-items: center;
+    height: 25px;
+    width: 225px;
+    font-size: 10px;
     margin-top: 0;
     margin-bottom: 10px;
+  }
+
+  .text-call,
+  h2 {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .title-3,
+  h3 {
+    font-size: 32px;
+    text-decoration: double;
+    text-align: center;
   }
 }
