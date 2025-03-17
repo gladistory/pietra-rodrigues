@@ -1,5 +1,6 @@
 .bg-color {
   background-color: #efedec;
+  -webkit-text-size-adjust: 100%;
 }
 
 .wrap {
@@ -12,8 +13,8 @@
   display: flex;
   align-items: center;
   background-image: url("https://iili.io/3FWpcdX.png");
-  background-repeat: no-repeat;
   background-size: cover;
+  background-position: left;
 }
 
 .headline {
@@ -41,6 +42,7 @@
   font-weight: bolder;
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: rgb(0, 181, 0);
   border-radius: 30px;
   color: #ffffff;
@@ -50,7 +52,6 @@
   line-height: 45px;
   margin-top: 26px;
   text-decoration: none;
-  display: flex;
   width: 450px;
   box-shadow: 0 0 15px rgba(44, 44, 44, 0.441);
 }
@@ -109,6 +110,7 @@ h2 {
   display: flex;
 }
 
+/* RESPONSIVO PARA MOBILE */
 @media (max-width: 768px) {
   .bold {
     width: 200px;
@@ -116,46 +118,44 @@ h2 {
   }
 
   .headline {
-    width: 65%;
-    margin-top: 20px;
-    margin-left: 90px;
+    width: 70%;
+    margin-left: 80px;
   }
 
   .section-1 {
     height: 80vh;
-    width: 100%;
+    padding: 20px;
   }
 
   h1 {
-    font-size: 15px;
+    font-size: 18px;
   }
   p {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .btn-pay {
-    align-items: center;
-    height: 25px;
-    width: 225px;
-    font-size: 10px;
-    margin-top: 0;
-    margin-bottom: 10px;
+    height: 30px;
+    width: 200px;
+    font-size: 9px;
+    margin-top: 10px;
   }
 
   .text-call,
   h2 {
-    font-size: 15px;
+    font-size: 18px;
     text-align: center;
   }
 
   .title-3,
   h3 {
-    font-size: 32px;
+    font-size: 24px;
     text-decoration: double;
     text-align: center;
   }
 
   .list-1 {
     width: 100%;
+    flex-wrap: wrap;
   }
 }
