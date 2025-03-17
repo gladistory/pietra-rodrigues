@@ -110,48 +110,98 @@ h2 {
   display: flex;
 }
 
-/* RESPONSIVO PARA MOBILE */
-@media (max-width: 768px) {
+/* Ajustes para telas pequenas (até 480px) */
+@media (max-width: 480px) {
   .bold {
-    width: 200px;
-    font-size: 12px;
+    width: 180px;
+    font-size: 10px;
+    height: auto;
+    padding: 5px;
   }
 
   .headline {
     width: 70%;
-    margin-left: 80px;
+    margin-left: 90px;
+  }
+
+  .section-1 {
+    height: auto;
+    min-height: 70vh;
+    padding: 15px;
+    background-size: cover;
+  }
+
+  h1 {
+    font-size: 14px;
+  }
+
+  p {
+    font-size: 10px;
+  }
+
+  .btn-pay {
+    height: 35px;
+    width: 200px;
+    font-size: 8px;
+    line-height: normal;
+  }
+
+  .text-call,
+  h2 {
+    font-size: 14px;
+  }
+
+  .title-3,
+  h3 {
+    font-size: 22px;
+  }
+
+  .list-1 {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
+
+/* Ajustes para telas grandes de celular (480px até 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .bold {
+    width: 220px;
+    font-size: 14px;
+  }
+
+  .headline {
+    width: 75%;
+    margin-left: 100px;
   }
 
   .section-1 {
     height: 80vh;
     padding: 20px;
+    background-size: cover;
   }
 
   h1 {
     font-size: 18px;
   }
+
   p {
     font-size: 12px;
   }
 
   .btn-pay {
-    height: 30px;
-    width: 200px;
-    font-size: 9px;
-    margin-top: 10px;
+    height: 40px;
+    width: 70%;
+    font-size: 14px;
   }
 
   .text-call,
   h2 {
-    font-size: 18px;
-    text-align: center;
+    font-size: 16px;
   }
 
   .title-3,
   h3 {
     font-size: 24px;
-    text-decoration: double;
-    text-align: center;
   }
 
   .list-1 {
