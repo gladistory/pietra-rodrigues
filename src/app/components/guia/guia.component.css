@@ -110,6 +110,39 @@ h2 {
   display: flex;
 }
 
+.dropdown-btn {
+  font-style: none;
+  border: none;
+  background: none;
+  text-decoration: underline;
+}
+
+.dropdown-container {
+  width: 100%;
+  height: 80vh;
+  text-align: center;
+}
+
+.dropdown {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.text-drop {
+  width: 500px;
+}
+
+.title-drop {
+  font-size: 40px;
+}
+
+.dec-mok {
+  width: 80%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.373);
+  border-radius: 10px;
+}
+
 /* Ajustes para telas pequenas (até 480px) */
 @media (max-width: 480px) {
   .bold {
@@ -159,6 +192,14 @@ h2 {
   .list-1 {
     width: 100%;
     flex-wrap: wrap;
+  }
+
+  .title-drop {
+    font-size: 20px;
+  }
+
+  .text-drop {
+    width: 200px;
   }
 }
 
