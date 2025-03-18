@@ -119,7 +119,6 @@ h2 {
 
 .dropdown-container {
   width: 100%;
-  height: 80vh;
   text-align: center;
 }
 
@@ -141,6 +140,21 @@ h2 {
   width: 80%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.373);
   border-radius: 10px;
+}
+
+.bonus-section {
+  flex-wrap: wrap;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #b4ada8;
+  color: #ffffff;
+}
+
+.banner-bonus {
+  width: 100%;
 }
 
 /* Ajustes para telas pequenas (até 480px) */
