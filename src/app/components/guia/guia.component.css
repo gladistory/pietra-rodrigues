@@ -114,7 +114,13 @@ h2 {
   font-style: none;
   border: none;
   background: none;
-  text-decoration: underline;
+  background-color: #b4ada8;
+  width: 600px;
+  border-radius: 10px;
+  color: #ffffff;
+}
+.dropdown-btn:hover {
+  background-color: #918b87;
 }
 
 .dropdown-container {
@@ -154,7 +160,29 @@ h2 {
 }
 
 .banner-bonus {
+  box-shadow: 0 0 20px rgba(81, 65, 65, 0.581);
   width: 100%;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.price-section {
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-price {
+  box-shadow: 0 0 20px rgba(74, 81, 65, 0.581);
+}
+
+.btn-buy {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  margin-top: 30px;
 }
 
 /* Ajustes para telas pequenas (até 480px) */
@@ -214,6 +242,10 @@ h2 {
 
   .text-drop {
     width: 200px;
+  }
+
+  .dropdown-btn {
+    width: 300px;
   }
 }
 
