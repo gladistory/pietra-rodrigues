@@ -207,6 +207,17 @@ h2 {
   display: flex;
   margin-top: 30px;
 }
+.who {
+  margin-top: 250px;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.img-who {
+  width: 420px;
+}
 
 /* Ajustes para telas pequenas (até 480px) */
 @media (max-width: 480px) {
@@ -215,6 +226,14 @@ h2 {
     font-size: 10px;
     height: auto;
     padding: 5px;
+  }
+
+  .img-who {
+    width: 320px;
+  }
+
+  .who {
+    margin-top: 350px;
   }
 
   .text-garantia {
