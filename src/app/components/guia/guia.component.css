@@ -219,6 +219,15 @@ h2 {
   margin: 10px;
 }
 
+.efeito-vidro {
+  background: rgba(255, 255, 255, 0.578);
+  box-shadow: 0 8px 32px 0 rgba(108, 105, 82, 0.37);
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
 /* Ajustes para telas pequenas (até 480px) */
 @media (max-width: 480px) {
   .bold {
@@ -259,7 +268,7 @@ h2 {
   .btn-pay {
     height: 35px;
     width: 200px;
-    font-size: 8px;
+    font-size: 10px;
     line-height: normal;
   }
 
@@ -288,6 +297,11 @@ h2 {
 
   .dropdown-btn {
     width: 300px;
+  }
+
+  .who {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 

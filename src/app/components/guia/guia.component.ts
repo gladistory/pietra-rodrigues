@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-guia',
@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './guia.component.css'
 })
 export class GuiaComponent {
+
+  @ViewChild('sessao') sessao!: ElementRef;
+
+  scrollToSection() {
+    this.sessao.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
 
 }
