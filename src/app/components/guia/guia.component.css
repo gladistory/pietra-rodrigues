@@ -227,6 +227,16 @@ h2 {
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+.pay {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pay-option {
+  width: 280px;
+}
 
 /* Ajustes para telas pequenas (até 480px) */
 @media (max-width: 480px) {
