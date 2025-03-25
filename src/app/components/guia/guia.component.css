@@ -208,7 +208,7 @@ h2 {
   margin-top: 30px;
 }
 .who {
-  margin-top: 200px;
+  margin-top: 250px;
   justify-content: center;
   display: flex;
   width: 100%;
@@ -236,6 +236,17 @@ h2 {
 
 .pay-option {
   width: 280px;
+}
+
+.faq {
+  background-color: #918b87;
+  border-radius: 20px;
+}
+
+.sac {
+  display: flex;
+  justify-content: center;
+  color: black;
 }
 
 /* Ajustes para telas pequenas (até 480px) */
@@ -310,7 +321,7 @@ h2 {
   }
 
   .who {
-    margin-top: 250px;
+    margin-top: 300px;
     display: flex;
     flex-wrap: wrap;
   }
