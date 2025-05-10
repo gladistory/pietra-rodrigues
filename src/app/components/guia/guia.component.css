@@ -69,7 +69,6 @@
   font-size: 16px;
   cursor: pointer;
   line-height: 45px;
-  margin-top: 26px;
   text-decoration: none;
   width: 450px;
   box-shadow: 0 0 15px rgba(44, 44, 44, 0.441);
@@ -227,15 +226,9 @@ h2 {
   margin-top: 30px;
 }
 .who {
-  margin-top: 250px;
   justify-content: center;
   display: flex;
   width: 100%;
-}
-
-.img-who {
-  width: 300px;
-  margin: 10px;
 }
 
 .efeito-vidro {
@@ -271,7 +264,7 @@ h2 {
 /* Ajustes para telas pequenas (até 480px) */
 @media (max-width: 480px) {
   .bold {
-    width: 180px;
+    width: 190px;
     font-size: 10px;
     height: auto;
     padding: 5px;
@@ -292,9 +285,10 @@ h2 {
 
   .section-1 {
     height: auto;
-    min-height: 70vh;
+    min-height: 100vh;
     padding: 15px;
-    background-size: cover;
+    background-size: auto;
+    background-position: -80px;
   }
 
   h1 {
@@ -340,7 +334,6 @@ h2 {
   }
 
   .who {
-    margin-top: 300px;
     display: flex;
     flex-wrap: wrap;
   }
@@ -350,16 +343,8 @@ h2 {
 @media (min-width: 481px) and (max-width: 768px) {
   .bold {
     width: 220px;
+    height: auto;
     font-size: 14px;
-  }
-
-  .who {
-    margin-top: 250px;
-  }
-
-  .img-who {
-    width: 200px;
-    margin: 10px;
   }
 
   .headline {

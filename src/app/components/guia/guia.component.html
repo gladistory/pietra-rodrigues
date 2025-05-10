@@ -21,7 +21,7 @@
             </div>
 
             <div class="text-p1">
-                <p class="lead"><strong>Este não é um guia comum</strong> - é a última peça que faltava para quem
+                <p class="lead"><strong>Este E-book</strong> - é a última peça que faltava para quem
                     precisa de um método
                     que realmente funcione dentro da rotina apertada de trabalho e obrigações pessoais.</p>
             </div>
@@ -40,7 +40,7 @@
             <h2><strong class="sg-call">Seja sincero(a):</strong> Quantas vezes você já pensou em dar início a essa
                 jornada, mas
                 desistiu antes mesmo de
-                começar <strong class="underline">por não saber como organizar os seus estudos</strong> e nem ter
+                começar, <strong class="underline">por não saber como organizar os seus estudos</strong> e nem ter
                 <strong>um
                     método</strong> que realmente
                 traga <strong>resultados</strong>
@@ -68,7 +68,7 @@
         <button class="btn-pay" (click)="scrollToSection()" target="_blank">Quero Descomplicar meus Estudos</button>
     </section>
 
-    <section class="dropdown-container mb-5">
+    <section class="dropdown-container mb-5" #sessao>
         <h1 class="title-drop mb-3">Quais tópicos estão incluídos no guia?</h1>
 
         <div class="dropdown">
@@ -231,6 +231,13 @@
     <section class="bonus-section">
         <img class="banner-bonus" src="bonus.png" alt="">
         <div class="container">
+            <div class="container">
+                <h2 class="lead text-center fw-bold mt-3">Além do Método DEC, após 7 dias é liberado na plataforma um
+                    bônus
+                    exclusivo
+                    com os seguintes conteúdos:
+                </h2>
+            </div>
             <div class="row row-cols-1 row-cols-md-3 g-4 mt-1">
                 <div class="col">
                     <div class="card h-100 text-center efeito-vidro">
@@ -296,124 +303,15 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <p class="lead text-center fw-bold mt-3">Além de ser muito útil na sua jornada, o material é original,
-                autoral
-                e
-                baseado
-                nos
-                conhecimentos que foram lapidados ao longo de anos estudando para concursos públicos e sendo servidora
-                também.
-            </p>
-            <p class="lead text-center fw-bold">
-                Agora que tenho um cargo público estável, quero que outras pessoas tenham a oportunidade de encurtar o
-                caminho para a aprovação e que seja acessível ao maior público possível.
-            </p>
-        </div>
 
-
-        <button class="btn-pay mb-5" (click)="scrollToSection()">Quero Destravar os Meus
+        <button class="btn-pay mb-5 mt-4" (click)="scrollToSectionbuy()">Quero Destravar os Meus
             Estudos</button>
 
 
     </section>
 
-    <div class="header">
-        <h1>📘 Guia Completo para Sua Aprovação em Concursos</h1>
-        <p>Tudo o que você precisa por um valor acessível!</p>
-    </div>
 
-    <div class="highlight">
-        <p>Quer começar sua jornada rumo à aprovação, mas não sabe por onde começar? Nosso material reúne
-            <strong>tudo</strong> que você precisa em um só lugar, com passo a passo simples e um preço que cabe no seu
-            bolso! 💰
-        </p>
-    </div>
-
-    <h2>🔍 O que você vai encontrar no guia?</h2>
-
-    <div class="text-center">
-        <ul>
-            <li><span class="check-item">✅</span> <strong>Entendendo a jornada</strong> - Saiba exatamente por onde
-                começar
-                e como se preparar.</li>
-            <li><span class="check-item">✅</span> <strong>Definindo área e concurso</strong> - Escolha o concurso ideal
-                para
-                seu perfil e evite frustrações.</li>
-            <li><span class="check-item">✅</span> <strong>Entendendo a prova por completo</strong> - Domine o edital e
-                antecipe os desafios.</li>
-            <li><span class="check-item">✅</span> <strong>Estilos de provas</strong> - Aprenda a se adaptar a cada tipo
-                de
-                exame.</li>
-            <li><span class="check-item">✅</span> <strong>Métodos de estudo flexíveis</strong> - Técnicas adaptáveis à
-                sua
-                rotina que <strong>realmente funcionam</strong>.</li>
-            <li><span class="check-item">✅</span> <strong>Estudo ativo</strong> - Aumente sua retenção de conteúdo com
-                técnicas eficazes.</li>
-            <li><span class="check-item">✅</span> <strong>Aproveitando o tempo "ocioso"</strong> - Dicas práticas para
-                estudar mesmo na correria.</li>
-            <li><span class="check-item">✅</span> <strong>Estudo reverso</strong> - O segredo estratégico que turbina
-                sua
-                preparação.</li>
-            <li><span class="check-item">✅</span> <strong>Revisões e simulados</strong> - O caminho para chegar
-                confiante no
-                dia da prova.</li>
-        </ul>
-
-    </div>
-    <h2>🎁 Bônus Exclusivos</h2>
-
-    <div class="text-center">
-        <ul>
-            <li><span class="bonus-item">💡</span> <strong>Não existe concorrência</strong> - Entenda a realidade dos
-                números e perca o medo.</li>
-            <li><span class="bonus-item">💡</span> <strong>Como se manter acordado(a)?</strong> - Estratégias para
-                vencer o
-                cansaço.</li>
-            <li><span class="bonus-item">💡</span> <strong>Alimentação inteligente</strong> - O que comer para melhorar
-                seu
-                rendimento.</li>
-            <li><span class="bonus-item">💡</span> <strong>Hábitos eficazes e exames importantes</strong> - Potencialize
-                seus resultados.</li>
-            <li><span class="bonus-item">💡</span> <strong>Como sair dos 70% de acertos</strong> - Quebre esse limite e
-                alcance notas altas!</li>
-        </ul>
-    </div>
-
-    <div class="cta-box">
-        <h2>💲 Valor Super Acessível + Métodos de Pagamento Facilitados!</h2>
-        <p>Investir no seu futuro nunca foi tão fácil! Oferecemos:</p>
-        <ul style="list-style-type: none; padding-left: 0;">
-            <li>✔️ <strong>Preço justo</strong> - Menos que um livro ou curso tradicional.</li>
-            <li>✔️ <strong>Parcelamento</strong> - Em até 12x no cartão.</li>
-            <li>✔️ <strong>Boleto, PIX e mais</strong> - Facilidade total na hora de pagar.</li>
-        </ul>
-
-        <p>Não perca tempo! Garanta já seu guia e comece sua preparação com o <strong>passo a passo certo</strong> para
-            a aprovação. 🚀</p>
-
-        <button (click)="scrollToSection()" class="cta-button">QUERO MEU MATERIAL AGORA!</button>
-    </div>
-
-
-
-
-    <section>
-        <h2>Relatos de quem adquiriu o material:</h2>
-        <div class="prova">
-            <div class="depoimento-card">
-                <img src="Prova1.png" alt="" style="width: 300px;margin-right: 10px;">
-                <img src="prova2.png" alt="" style="width: 300px;margin-right: 10px;">
-                <img src="p3.png" alt="" style="width: 300px;margin-right: 10px;">
-                <img src="p4.png" alt="" style="width: 300px;margin-right: 10px;">
-            </div>
-        </div>
-    </section>
-
-    <p style="text-align: center; font-style: italic; margin-top: 40px;">Transforme seu sonho em realidade - sem
-        complicação e sem gastar muito! 💪📚</p>
-
-    <section id="sessao2" #sessao class="price-section">
+    <section class="price-section" #buy>
 
         <div class="container">
             <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -441,23 +339,10 @@
                     </div>
                 </div>
             </div>
-
-            <div class="garantia">
-                <img class="selo-img" src="selo.png" alt="">
-                <div class="container">
-                    <p class="text-garantia"> Como temos certeza de que esse material será essencial na sua aprovação,
-                        estamos te oferecendo uma garantia.
-
-                        Sem burocracias, basta enviar um e-mail dentro do prazo de 7 dias que realizaremos 100% do
-                        reembolso
-                        do valor investido.
-                    </p>
-                </div>
-            </div>
         </div>
     </section>
 
-    <section class="who">
+    <!-- <section class="who">
         <blockquote class="instagram-media" data-instgrm-captioned
             data-instgrm-permalink="https://www.instagram.com/p/DGI4QTIOgjK/?utm_source=ig_embed&amp;utm_campaign=loading"
             data-instgrm-version="14"
@@ -549,7 +434,7 @@
                 </p>
             </div>
         </blockquote>
-    </section>
+    </section> -->
 
     <hr>
 

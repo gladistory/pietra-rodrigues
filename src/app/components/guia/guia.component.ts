@@ -9,9 +9,13 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 export class GuiaComponent {
 
   @ViewChild('sessao') sessao!: ElementRef;
-
+  @ViewChild('buy') buy!: ElementRef;
+  
   scrollToSection() {
     this.sessao.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
 
+   scrollToSectionbuy() {
+    this.buy.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
 }
