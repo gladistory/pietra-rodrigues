@@ -3,4 +3,5 @@ import { GuiaComponent } from './components/guia/guia.component';
 
 export const routes: Routes = [
     {path: '', component: GuiaComponent},
+    {path: 'dec', component: GuiaComponent},
 ];
