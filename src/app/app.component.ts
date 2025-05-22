@@ -6,7 +6,7 @@ import { OverlayComponent } from "./components/overlay/overlay.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [RouterOutlet, HeaderComponent, OverlayComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
