@@ -5,5 +5,5 @@ import { AlinhamentoComponent } from './components/alinhamento/alinhamento.compo
 export const routes: Routes = [
     { path: '', component: GuiaComponent },
     { path: 'dec', component: GuiaComponent },
-    { path: 'alinhamento-estrategico', component: AlinhamentoComponent },
+    { path: 'alinhamento', component: AlinhamentoComponent },
 ];
