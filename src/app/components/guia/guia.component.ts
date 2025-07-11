@@ -22,7 +22,7 @@ export class GuiaComponent {
     const url = `https://api.telegram.org/bot${this.botToken}/sendMessage`;
     const body = {
       chat_id: this.chatId,
-      text: '🛒 Alguém clicou no botão COMPRAR no site!'
+      text: '🛒 Alguém clicou no botão COMPRAR DEC no site!'
     };
 
     this.http.post(url, body).subscribe({
