@@ -43,7 +43,7 @@ export class AlinhamentoComponent {
     },
     {
       question: 'O guia substitui o material de estudo das matérias?',
-      answer: 'Não. Este é um guia de estratégia e organização, não contém conteúdo específico de disciplinas. Ele vai te ensinar como estudar de forma eficiente com o material que você já possui.',
+      answer: 'Não. Este é um guia de estratégia e organização, não contém conteúdo específico de disciplinas. Ele vai te ensinar a estruturar os  estudos com o que realmente importa, sem perder o tempo que você não tem quebrando a cabeça com o edital.',
       open: false
     }
   ];
