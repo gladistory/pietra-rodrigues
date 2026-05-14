@@ -1,0 +1,54 @@
+# Publica dist/ no branch gh-pages. O base href precisa bater com a URL do Pages.
+#
+# - Projeto: https://usuario.github.io/NOME-DO-REPO/  →  base = /NOME-DO-REPO/
+# - Site de usuário (repo usuario.github.io):         →  base = /
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Definir base href (GitHub Pages)
+        shell: bash
+        run: |
+          REPO="${{ github.event.repository.name }}"
+          if [[ "$REPO" == *.github.io ]]; then
+            echo "BASE_HREF=/" >> "$GITHUB_ENV"
+            echo "Pages (site de usuário/org): BASE_HREF=/"
+          else
+            echo "BASE_HREF=/${REPO}/" >> "$GITHUB_ENV"
+            echo "Pages (projeto): BASE_HREF=/${REPO}/"
+          fi
+
+      - name: Install and build
+        run: |
+          npm ci
+          npx ng build --base-href="${BASE_HREF}"
+
+      - name: SPA fallback (404.html)
+        run: node scripts/spa-github-pages-fallback.mjs
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          force_orphan: true
