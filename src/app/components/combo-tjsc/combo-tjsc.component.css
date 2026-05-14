@@ -207,17 +207,32 @@ h1, h2, h3, h4 {
     text-align: center;
 }
 
-/* Placeholder redondo para a sua foto */
-.author-img div {
+/* Foto circular no frame */
+.author-photo {
     width: 300px;
     height: 300px;
-    background-color: #DDD;
-    border-radius: 50%;
     margin: 0 auto;
-    background-image: url('https://via.placeholder.com/300x300/0A1E3F/D4AF37?text=FOTO+DO+AUTOR+AQUI'); 
-    background-size: cover;
-    background-position: center;
+    border-radius: 50%;
+    overflow: hidden;
     border: 5px solid #D4AF37;
+    flex-shrink: 0;
+    line-height: 0;
+}
+
+.author-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    /* Bootstrap usa height:auto no img — força cobrir o círculo todo */
+    height: 100%;
+    /* Evita “fio” claro por antialiasing no recorte circular */
+    transform: scale(1.04);
+    transform-origin: center center;
 }
 
 .author-text {
