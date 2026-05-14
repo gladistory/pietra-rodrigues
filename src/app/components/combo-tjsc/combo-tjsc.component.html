@@ -7,286 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        /* --- RESET BÁSICO --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: #333333;
-            line-height: 1.6;
-            background-color: #F8F9FA;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            line-height: 1.2;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* --- BOTÕES --- */
-        .btn {
-            display: inline-block;
-            background-color: #FF5A00;
-            color: #FFFFFF;
-            padding: 18px 36px;
-            font-size: 1.1rem;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(255, 90, 0, 0.4);
-            transition: all 0.3s ease;
-            text-align: center;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .btn:hover {
-            background-color: #E04E00;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 90, 0, 0.6);
-        }
-
-        /* --- DOBRA SUPERIOR (HERO) --- */
-        .hero {
-            background: linear-gradient(135deg, #0A1E3F 0%, #112F5C 100%);
-            color: #FFFFFF;
-            padding: 80px 0;
-        }
-
-        .hero .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-        }
-
-        .hero-content {
-            flex: 1;
-        }
-
-        .tag {
-            background-color: #D4AF37;
-            color: #0A1E3F;
-            padding: 5px 12px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: #D4AF37;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .hero-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        /* --- PROBLEMA (AGITAÇÃO) --- */
-        .problem {
-            padding: 80px 0;
-            background-color: #FFF;
-            text-align: center;
-        }
-
-        .problem h2 {
-            font-size: 2.2rem;
-            color: #0A1E3F;
-            margin-bottom: 20px;
-        }
-
-        .problem p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            color: #555;
-        }
-
-        /* --- MÓDULOS (CARDS) --- */
-        .modules {
-            padding: 80px 0;
-            background-color: #F8F9FA;
-        }
-
-        .modules h2 {
-            text-align: center;
-            font-size: 2.2rem;
-            color: #0A1E3F;
-            margin-bottom: 50px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: #FFF;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            border-top: 5px solid #0A1E3F;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            color: #0A1E3F;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .card p {
-            font-size: 0.95rem;
-            color: #666;
-        }
-
-        /* --- METODOLOGIA --- */
-        .method {
-            background-color: #0A1E3F;
-            color: #FFFFFF;
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .method h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            color: #D4AF37;
-        }
-
-        .method p {
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-            font-size: 1.1rem;
-        }
-
-        /* --- AUTORIDADE --- */
-        .author {
-            padding: 80px 0;
-            background-color: #FFF;
-        }
-
-        .author .container {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .author-img {
-            flex: 1;
-            text-align: center;
-        }
-
-        /* Placeholder redondo para a sua foto */
-        .author-img div {
-            width: 300px;
-            height: 300px;
-            background-color: #DDD;
-            border-radius: 50%;
-            margin: 0 auto;
-            background-size: cover;
-            background-position: center;
-            border: 5px solid #D4AF37;
-        }
-
-        .author-text {
-            flex: 2;
-        }
-
-        .author-text h2 {
-            font-size: 2rem;
-            color: #0A1E3F;
-            margin-bottom: 15px;
-        }
-
-        /* --- OFERTA (PRICING) --- */
-        .offer {
-            padding: 80px 0;
-            background-color: #F8F9FA;
-            text-align: center;
-        }
-
-        .pricing-box {
-            background: #FFF;
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 50px 30px;
-            border-radius: 15px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border: 2px solid #D4AF37;
-        }
-
-        .pricing-box h2 {
-            color: #0A1E3F;
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .price-old {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 1.2rem;
-        }
-
-        .price-new {
-            font-size: 3.5rem;
-            color: #0A1E3F;
-            font-weight: 800;
-            font-family: 'Montserrat', sans-serif;
-            margin: 10px 0 20px 0;
-            line-height: 1;
-        }
-
-        /* --- RESPONSIVIDADE --- */
-        @media (max-width: 768px) {
-            .hero .container, .author .container {
-                flex-direction: column;
-                text-align: center;
-            }
-            .hero h1 { font-size: 2.2rem; }
-            .btn { width: 100%; }
-        }
-    </style>
 </head>
 <body>
 
@@ -297,7 +17,7 @@
                 <h1>O edital é infinito, <span>mas seu tempo não.</span></h1>
                 <p>Domine os pontos mais cobrados de Direito (Administrativo, Penal e Processual, Civil e Processual, Constitucional e Improbidade Administrativa), além de Português e Legislação Específica com um material 100% focado em quem precisa de velocidade e eficiência na reta final do TJSC.
                 </p>
-                <a href="#oferta" class="btn">Quero Acelerar Minha Revisão</a>
+                <a class="btn" (click)="navigateToOferta($event)">Quero Acelerar Minha Revisão</a>
             </div>
             <div class="hero-image">
                 <img src="combo-tjsc.png" alt="Combo Estratégico TJSC">
@@ -355,7 +75,7 @@
         <div class="container">
             <h2>Metodologia Baseada em Resultados</h2>
             <p>Este material foi construído com base em anos de experiência sendo concursada e concurseira, milhares de questões resolvidas e com o objetivo de direcionar o estudo ativo e memória de longo prazo. Não perca tempo grifando, eu já destaquei o que é importante e o que vai estar na sua prova!</p>
-            <a href="#oferta" class="btn">Garantir Meu Acesso Agora</a>
+            <a class="btn" (click)="navigateToOferta($event)">Garantir Meu Acesso Agora</a>
         </div>
     </section>
 
@@ -380,10 +100,11 @@
             <div class="pricing-box">
                 <h2>O Mapa da sua Aprovação</h2>
                 <p>Acesso imediato a todos os materiais estratégicos em PDF.</p>
-                <div class="price-old">De R$ 423,00 por apenas</div>
+                <div class="price-old">De R$ 423,00</div>
+                <div class="price-text">Por apenas</div>
                 <div class="price-new">R$ 297,00</div>
-                <p style="margin-bottom: 25px; color: #666;">ou em até 12x no cartão</p>
-                <a href="LINK_DO_SEU_CHECKOUT_AQUI" class="btn">Comprar Combo Agora</a>
+                <p style="margin-bottom: 25px; color: #666;">ou em até <strong>12x de R$ 30,72</strong> no cartão</p>
+                <a href="https://pay.kiwify.com.br/kB6Xjr5" class="btn" target="_blank" (click)="notificarCompra() ">Comprar Combo Agora</a>
                 <p style="margin-top: 15px; font-size: 0.85rem; color: #888;">🔒 Compra 100% segura • 7 dias de garantia</p>
             </div>
         </div>
