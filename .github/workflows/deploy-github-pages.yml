@@ -1,7 +1,10 @@
-# Publica dist/ no branch gh-pages. O base href precisa bater com a URL do Pages.
+# Publica dist/ no branch gh-pages.
 #
-# - Projeto: https://usuario.github.io/NOME-DO-REPO/  →  base = /NOME-DO-REPO/
-# - Site de usuário (repo usuario.github.io):         →  base = /
+# Domínio personalizado na raiz: https://piettra-rodrigues.com.br/  →  BASE_HREF = /
+# (O ficheiro public/CNAME aponta o GitHub Pages para esse hostname.)
+#
+# Se voltar a publicar só em https://usuario.github.io/NOME-DO-REPO/, altere BASE_HREF
+# para /NOME-DO-REPO/ e remova ou esvazie public/CNAME se não usar domínio próprio.
 name: Deploy GitHub Pages
 
 on:
@@ -18,6 +21,9 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      # Raiz do site no domínio (scripts em /main-*.js, não em /repo/main-*.js)
+      BASE_HREF: /
     steps:
       - uses: actions/checkout@v4
 
@@ -25,18 +31,6 @@ jobs:
         with:
           node-version: "20"
           cache: npm
-
-      - name: Definir base href (GitHub Pages)
-        shell: bash
-        run: |
-          REPO="${{ github.event.repository.name }}"
-          if [[ "$REPO" == *.github.io ]]; then
-            echo "BASE_HREF=/" >> "$GITHUB_ENV"
-            echo "Pages (site de usuário/org): BASE_HREF=/"
-          else
-            echo "BASE_HREF=/${REPO}/" >> "$GITHUB_ENV"
-            echo "Pages (projeto): BASE_HREF=/${REPO}/"
-          fi
 
       - name: Install and build
         run: |
