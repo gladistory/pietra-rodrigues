@@ -17,9 +17,11 @@ site/
 ├── main.js           ← acordeão, scroll suave, ano do rodapé, notificação de compra
 ├── CNAME             ← domínio personalizado do GitHub Pages
 ├── favicon.ico
-├── logo-claro.png    ← logo PR sobre fundos escuros (cabeçalho e rodapé)
-├── logo-roxo.png     ← mesma logo em roxo, para fundos claros
-└── *.png / *.jpeg    ← imagens (caminhos absolutos: /bonus.png, ...)
+├── logo-claro.png    ← logo (xícara + PR) sobre fundos escuros (cabeçalho e rodapé)
+├── logo-roxo.png     ← mesma logo em roxo, para fundos claros (não usada hoje)
+├── autora-1.jpg      ← foto da autora (seção "Sobre a autora")
+├── autora-2.jpg      ← foto de acento da mesma seção
+└── *.png / *.jpeg    ← demais imagens (caminhos absolutos: /bonus.png, ...)
 ```
 
 ## Identidade visual
@@ -81,9 +83,13 @@ que copia `index.html` para `dec/index.html` e `404.html` e publica a pasta
 
 ## Pontos de atenção
 
-- Toda `<img>` precisa de `width` e `height`: sem isso o espaço não é reservado
-  antes do carregamento, a página cresce durante o scroll e os botões de CTA
-  erram o alvo.
+- Toda `<img>` precisa de `width` e `height`, **e** do contêiner direto uma
+  largura explícita (não só `max-width`). Um bloco com `margin: 0 auto` e sem
+  `width` própria encolhe para o conteúdo — mas se o conteúdo é a própria
+  `<img width="100%">`, isso cria uma referência circular que resolve como 0
+  até o layout assentar. Sem essas duas coisas a página cresce durante o
+  carregamento e os botões de CTA erram o alvo (aconteceu com `.depoimento` e
+  com `.autora__fotos`).
 - O token do bot do Telegram em [site/main.js](site/main.js) fica visível no
   código-fonte da página. Para protegê-lo é preciso mover a chamada para um
   backend/função serverless.
