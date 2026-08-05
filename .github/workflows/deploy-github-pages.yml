@@ -1,10 +1,7 @@
-# Publica dist/ no branch gh-pages.
+# Publica a pasta site/ no branch gh-pages. Não há build: o site é HTML/CSS/JS puro.
 #
-# Domínio personalizado na raiz: https://piettra-rodrigues.com.br/  →  BASE_HREF = /
-# (O ficheiro public/CNAME aponta o GitHub Pages para esse hostname.)
-#
-# Se voltar a publicar só em https://usuario.github.io/NOME-DO-REPO/, altere BASE_HREF
-# para /NOME-DO-REPO/ e remova ou esvazie public/CNAME se não usar domínio próprio.
+# Domínio personalizado na raiz: https://piettra-rodrigues.com.br/
+# (O ficheiro site/CNAME aponta o GitHub Pages para esse hostname.)
 name: Deploy GitHub Pages
 
 on:
@@ -19,30 +16,22 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    env:
-      # Raiz do site no domínio (scripts em /main-*.js, não em /repo/main-*.js)
-      BASE_HREF: /
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: npm
-
-      - name: Install and build
+      # A rota /dec serve o mesmo conteúdo da home (era uma rota do Angular).
+      # A cópia é feita aqui para existir um único index.html como fonte da verdade.
+      - name: Gerar /dec e fallback 404
         run: |
-          npm ci
-          npx ng build --base-href="${BASE_HREF}"
-
-      - name: SPA fallback (404.html)
-        run: node scripts/spa-github-pages-fallback.mjs
+          mkdir -p site/dec
+          cp site/index.html site/dec/index.html
+          cp site/index.html site/404.html
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./site
           force_orphan: true

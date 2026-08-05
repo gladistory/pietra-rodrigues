@@ -1,59 +1,90 @@
-# SiteMentoria
+# Site Mentoria — Método DEC
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.5.
+Landing page estática (HTML + CSS + JS), sem framework, sem build e sem
+dependência de CDN além das fontes.
+Publicada em https://piettra-rodrigues.com.br/
 
-## Development server
+> Até agosto/2026 o projeto era uma aplicação Angular 19. A migração manteve
+> apenas a página do guia; o código Angular continua disponível no histórico do
+> git (commit anterior a esta migração).
 
-To start a local development server, run:
+## Estrutura
 
-```bash
-ng serve
+```
+site/
+├── index.html        ← a página inteira (única fonte da verdade)
+├── styles.css        ← sistema visual da marca + componentes
+├── main.js           ← acordeão, scroll suave, ano do rodapé, notificação de compra
+├── CNAME             ← domínio personalizado do GitHub Pages
+├── favicon.ico
+├── logo-claro.png    ← logo PR sobre fundos escuros (cabeçalho e rodapé)
+├── logo-roxo.png     ← mesma logo em roxo, para fundos claros
+└── *.png / *.jpeg    ← imagens (caminhos absolutos: /bonus.png, ...)
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Identidade visual
 
-## Code scaffolding
+Tudo sai das variáveis no topo de [site/styles.css](site/styles.css) — mudar a
+marca é mudar ali, não nos componentes.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+| Cor | Hex | Papel |
+|---|---|---|
+| Roxo | `#645470` | Autoridade — cabeçalho, títulos, CTAs primários |
+| Lilás | `#bda2b6` | Acolhimento — seções motivacionais e depoimentos |
+| Bege quente | `#bd9f83` | Apoio — ícones, bordas, traços decorativos |
+| Marrom café | `#68513f` | Conquista — rodapé e CTA de compra |
+| Off-white | `#f9f7ec` | Fundo geral (nunca branco puro) |
+| Cinza | `#545454` | Texto de corpo (nunca preto puro) |
 
-```bash
-ng generate component component-name
-```
+Tipografia (Google Fonts): **Montserrat 500** nos títulos, **Raleway 400** no
+corpo, **Cormorant Garamond itálico** nas frases de destaque e no slogan.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Observações de uso:
 
-```bash
-ng generate --help
-```
+- O bege puro sobre o off-white fica em ~2,3:1 de contraste, abaixo do mínimo
+  legível — em texto usa-se o marrom; o bege fica para ícones e traços.
+- As lavagens `--color-lilas-wash` / `--color-beige-wash` são as cores da marca
+  diluídas no off-white: é o que permite fundo de seção colorido mantendo o
+  texto cinza legível.
 
-## Building
+## Rodar localmente
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Os caminhos são absolutos (`/styles.css`, `/bonus.png`), então é preciso um
+servidor HTTP — abrir o arquivo direto pelo `file://` não funciona.
 
 ```bash
-ng e2e
+python -m http.server 8080 --directory site
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Depois abra http://localhost:8080/
 
-## Additional Resources
+Para testar também a rota `/dec` (gerada no deploy), copie o index antes de subir
+o servidor:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+mkdir -p site/dec && cp site/index.html site/dec/index.html
+```
+
+Essa cópia é ignorada pelo git.
+
+## Deploy
+
+Automático: qualquer push em `master` dispara
+[.github/workflows/deploy-github-pages.yml](.github/workflows/deploy-github-pages.yml),
+que copia `index.html` para `dec/index.html` e `404.html` e publica a pasta
+`site/` no branch `gh-pages`. Não há instalação de dependências nem build.
+
+## Dependências externas
+
+- Google Fonts (Montserrat, Raleway, Cormorant Garamond)
+- Meta Pixel (2 IDs) e player do YouTube
+
+## Pontos de atenção
+
+- Toda `<img>` precisa de `width` e `height`: sem isso o espaço não é reservado
+  antes do carregamento, a página cresce durante o scroll e os botões de CTA
+  erram o alvo.
+- O token do bot do Telegram em [site/main.js](site/main.js) fica visível no
+  código-fonte da página. Para protegê-lo é preciso mover a chamada para um
+  backend/função serverless.
+- As rotas antigas `/alinhamento` e `/combo-tjsc` deixaram de existir.

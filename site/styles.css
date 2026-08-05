@@ -1,0 +1,813 @@
+/* ==========================================================================
+   Pietra Rodrigues — sistema visual
+   Paleta e tipografia da marca. Tudo o que for cor, fonte, espaçamento ou
+   raio deve sair das variáveis abaixo, nunca de valores soltos nos
+   componentes — é o que mantém as páginas consistentes.
+   ========================================================================== */
+
+:root {
+  /* Tipografia */
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Raleway", sans-serif;
+  --font-accent: "Cormorant Garamond", serif;
+
+  /* Cores da marca */
+  --color-primary: #645470; /* roxo — autoridade */
+  --color-secondary: #bda2b6; /* lilás — acolhimento */
+  --color-beige: #bd9f83; /* bege quente — apoio */
+  --color-brown: #68513f; /* marrom café — conquista */
+  --color-offwhite: #f9f7ec; /* fundo geral */
+  --color-text: #545454; /* texto de corpo */
+
+  /* Tons derivados (lavagens suaves das cores da marca sobre o off-white) */
+  --color-primary-dark: #4f4159;
+  --color-lilas-wash: #e1d5d6;
+  --color-beige-wash: #e7ddcc;
+  --color-card: #fffefa;
+  --color-linha: rgba(189, 159, 131, 0.38);
+
+  /* Ritmo e forma */
+  --espaco-secao: clamp(3.5rem, 7vw, 6rem);
+  --raio: 16px;
+  --raio-pill: 999px;
+  --sombra: 0 10px 30px rgba(104, 81, 63, 0.09);
+  --sombra-forte: 0 16px 40px rgba(104, 81, 63, 0.16);
+  --altura-cabecalho: 72px;
+  --largura-container: 1120px;
+}
+
+/* ==========================================================================
+   Reset enxuto
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-offwhite);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+[id] {
+  scroll-margin-top: calc(var(--altura-cabecalho) + 1rem);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--color-secondary);
+  color: var(--color-offwhite);
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--color-offwhite);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--color-secondary);
+  border-radius: var(--raio-pill);
+}
+
+/* ==========================================================================
+   Tipografia
+   ========================================================================== */
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-primary);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(1.6rem, 1.15rem + 1.7vw, 2.45rem);
+}
+
+h2 {
+  font-size: clamp(1.4rem, 1rem + 1.5vw, 2.1rem);
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
+p + p {
+  margin-top: 1rem;
+}
+
+strong {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.lead {
+  font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.2rem);
+}
+
+/* Frase editorial em serifada — usar com parcimônia */
+.acento {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Bege puro sobre o off-white fica em ~2,3:1 de contraste — abaixo do mínimo
+   legível. Nos textos usamos o marrom; o bege fica para ícones e traços. */
+.kicker {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--color-brown);
+  letter-spacing: 0.01em;
+}
+
+.titulo-secao {
+  text-align: center;
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.titulo-secao .acento {
+  font-size: 1.35em;
+}
+
+/* Marca-texto da marca: acompanha a quebra de linha em vez de virar uma barra */
+.destaque {
+  display: inline;
+  background: linear-gradient(
+    180deg,
+    transparent 58%,
+    var(--color-lilas-wash) 58%
+  );
+  padding: 0 0.25rem 0.1rem;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.sublinhado {
+  text-decoration: underline;
+  text-decoration-color: var(--color-beige);
+  text-decoration-thickness: 2px;
+}
+
+.centralizado {
+  display: flex;
+  justify-content: center;
+}
+
+/* Linha orgânica decorativa */
+.ornamento {
+  width: min(240px, 60%);
+  height: auto;
+  margin: 0 auto 1.5rem;
+  color: var(--color-beige);
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   Estrutura
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--largura-container);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 2.5rem);
+}
+
+.container--medio {
+  max-width: 860px;
+}
+
+.container--estreito {
+  max-width: 680px;
+}
+
+.secao {
+  padding-block: var(--espaco-secao);
+}
+
+.secao--lilas {
+  background-color: var(--color-lilas-wash);
+}
+
+.secao--bege {
+  background-color: var(--color-beige-wash);
+}
+
+/* ==========================================================================
+   Cabeçalho
+   ========================================================================== */
+
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--altura-cabecalho);
+  display: flex;
+  align-items: center;
+  background-color: var(--color-primary);
+  box-shadow: 0 2px 20px rgba(80, 65, 89, 0.25);
+}
+
+.cabecalho__interno {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.cabecalho__logo img {
+  height: 38px;
+  width: auto;
+}
+
+.cabecalho__slogan {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--color-offwhite);
+  opacity: 0.92;
+}
+
+/* ==========================================================================
+   Botões
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 54px;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: var(--raio-pill);
+  background-color: var(--color-primary);
+  color: var(--color-offwhite);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+  transition: background-color 0.25s ease, transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.btn:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-offwhite);
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-forte);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* CTA de conquista/resultado */
+.btn--conquista {
+  background-color: var(--color-brown);
+}
+
+.btn--conquista:hover {
+  background-color: #55402f;
+}
+
+.btn--bloco {
+  width: 100%;
+}
+
+/* ==========================================================================
+   Capa
+   ========================================================================== */
+
+.capa {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: calc(100svh - var(--altura-cabecalho));
+  padding-block: clamp(3rem, 8vw, 5rem);
+  background-image: url("/headline-bg.png");
+  background-size: cover;
+  background-position: left center;
+}
+
+.capa::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgb(249, 247, 236) 0%,
+    rgba(249, 247, 236, 0.985) 42%,
+    rgba(249, 247, 236, 0.72) 60%,
+    rgba(249, 247, 236, 0) 88%
+  );
+}
+
+.capa__interno {
+  position: relative;
+  max-width: 640px;
+  margin-inline: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.capa h1 {
+  margin-top: -0.25rem;
+}
+
+.capa .btn {
+  margin-top: 0.75rem;
+}
+
+/* ==========================================================================
+   Vídeo
+   ========================================================================== */
+
+.secao--video {
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.video__moldura {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-linha);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+.video__moldura iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* ==========================================================================
+   Chamada editorial
+   ========================================================================== */
+
+.chamada__texto {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(1.15rem, 0.95rem + 1vw, 1.6rem);
+  line-height: 1.5;
+  text-align: center;
+  color: var(--color-primary);
+}
+
+.chamada__texto .acento {
+  font-size: 1.3em;
+  color: var(--color-brown);
+}
+
+/* ==========================================================================
+   Checklist
+   ========================================================================== */
+
+.checklist {
+  display: grid;
+  gap: 1rem;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-linha);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+.checklist__icone {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin-top: 0.15rem;
+  border-radius: 50%;
+  background-color: var(--color-beige-wash);
+  color: var(--color-brown);
+}
+
+.secao--bege .checklist__icone {
+  background-color: var(--color-lilas-wash);
+  color: var(--color-primary);
+}
+
+.checklist__icone svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* ==========================================================================
+   Mockup do material
+   ========================================================================== */
+
+.mockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mockup__imagem {
+  width: 100%;
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-forte);
+}
+
+/* ==========================================================================
+   Acordeão (tópicos do guia e dúvidas frequentes)
+   ========================================================================== */
+
+.acordeao {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-linha);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  overflow: hidden;
+}
+
+.acordeao__item + .acordeao__item {
+  border-top: 1px solid var(--color-linha);
+}
+
+.acordeao h3 {
+  font-size: inherit;
+}
+
+.acordeao__gatilho {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem clamp(1rem, 3vw, 1.5rem);
+  background: none;
+  border: none;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  color: var(--color-primary);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.acordeao__gatilho:hover {
+  background-color: var(--color-lilas-wash);
+}
+
+.acordeao__seta {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  color: var(--color-brown);
+  transition: transform 0.3s ease;
+}
+
+.acordeao__gatilho[aria-expanded="true"] .acordeao__seta {
+  transform: rotate(180deg);
+  color: var(--color-primary);
+}
+
+.acordeao__painel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.acordeao__painel > div {
+  overflow: hidden;
+  visibility: hidden;
+  transition: visibility 0.3s;
+}
+
+.acordeao__item--aberto .acordeao__painel {
+  grid-template-rows: 1fr;
+}
+
+.acordeao__item--aberto .acordeao__painel > div {
+  visibility: visible;
+}
+
+.acordeao__painel p {
+  padding: 0 clamp(1rem, 3vw, 1.5rem) 1.35rem;
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+   Bônus
+   ========================================================================== */
+
+.secao--bonus {
+  padding-top: 0;
+  background-color: var(--color-beige-wash);
+}
+
+.bonus__banner {
+  width: 100%;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.card {
+  padding: 1.75rem 1.5rem;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-linha);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-forte);
+}
+
+.card__titulo {
+  margin-bottom: 0.75rem;
+}
+
+.card p {
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+   Depoimentos
+   ========================================================================== */
+
+.depoimentos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.depoimento {
+  /* largura definida: sem ela a figura encolhe para o conteúdo e o width:100%
+     da imagem resolve como 0 até o arquivo carregar — a proporção deixa de ser
+     reservada e a página "pula" durante o scroll até a oferta. */
+  width: 100%;
+  max-width: 340px;
+  padding: 0.6rem;
+  background-color: var(--color-card);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+.depoimento img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* ==========================================================================
+   Oferta
+   ========================================================================== */
+
+.secao--oferta {
+  background-color: var(--color-primary);
+}
+
+.oferta {
+  background-color: var(--color-card);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-forte);
+  overflow: hidden;
+}
+
+.oferta__imagem {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.oferta__corpo {
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  text-align: center;
+}
+
+.oferta__corpo .kicker {
+  color: var(--color-brown);
+}
+
+.oferta__de {
+  font-size: 1.25rem;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.oferta__por {
+  margin-top: 0.35rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
+  color: var(--color-primary);
+}
+
+.oferta__por strong {
+  font-weight: 700;
+}
+
+.oferta__nota {
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.oferta__pagamento {
+  width: 260px;
+  max-width: 100%;
+  margin: 1.25rem auto;
+}
+
+.oferta__garantia {
+  margin-top: 1rem;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-brown);
+}
+
+/* ==========================================================================
+   Rodapé
+   ========================================================================== */
+
+.rodape {
+  background-color: var(--color-brown);
+  color: var(--color-offwhite);
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+  text-align: center;
+}
+
+.rodape__interno {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rodape__logo {
+  height: 66px;
+  width: auto;
+  opacity: 0.95;
+}
+
+.rodape__slogan {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.35rem;
+}
+
+.rodape__contato {
+  margin-top: 1.5rem;
+}
+
+.rodape__contato h2 {
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  color: var(--color-offwhite);
+  margin-bottom: 0.75rem;
+}
+
+.rodape a {
+  color: var(--color-offwhite);
+  text-decoration: underline;
+  text-decoration-color: var(--color-secondary);
+}
+
+.rodape a:hover {
+  color: var(--color-secondary);
+}
+
+.rodape__credito {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   Ajustes de tela pequena
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .cabecalho__slogan {
+    display: none;
+  }
+
+  .capa {
+    background-position: 30% center;
+    text-align: center;
+  }
+
+  .capa::before {
+    background: linear-gradient(
+      180deg,
+      rgba(249, 247, 236, 0.9) 0%,
+      rgba(249, 247, 236, 0.95) 25%,
+      rgba(249, 247, 236, 0.95) 100%
+    );
+  }
+
+  .capa__interno {
+    align-items: center;
+    margin-inline: auto;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
