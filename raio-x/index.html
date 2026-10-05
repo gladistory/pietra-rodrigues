@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raio-X da Rotina Funcional · Pietra Rodrigues</title>
+<meta name="description" content="Autoavaliação rápida: descubra em qual zona está o seu ecossistema de aprovação.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --roxo:#66546F; --creme:#FAF7EB; --areia:#BC9C7C; --marrom:#6B5342;
+  --lilas:#BDA2B8; --texto:#5A5654; --linha:#DDD8CC;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Raleway',sans-serif;color:var(--texto);background:var(--creme);line-height:1.6;-webkit-font-smoothing:antialiased}
+.screen{display:none;min-height:100vh;position:relative;overflow:hidden}
+.screen.active{display:flex;flex-direction:column;animation:fade .5s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.wrap{width:100%;max-width:680px;margin:0 auto;padding:56px 24px 40px;flex:1;display:flex;flex-direction:column;position:relative;z-index:2}
+.dark{background:var(--roxo);color:var(--creme)}
+.brown{background:var(--marrom);color:var(--creme)}
+.eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:500}
+.serif{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.05}
+h1.serif{font-size:clamp(46px,11vw,76px);font-family:'Montserrat',sans-serif;font-weight:500;line-height:1.1;letter-spacing:.01em;text-transform:uppercase}
+h2.serif{font-size:clamp(36px,8vw,52px);color:var(--roxo)}
+.dark h2.serif,.brown h2.serif{color:var(--creme)}
+.italic{font-family:'Cormorant Garamond',serif;font-style:italic}
+.lead{font-size:18px;margin:28px 0}
+.lead strong{color:#4a4644}
+.topbar{display:flex;justify-content:space-between;align-items:center;font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--marrom);margin-bottom:40px}
+.dark .topbar,.brown .topbar{color:var(--creme)}
+.footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:40px;font-size:13px}
+.footer .nome{font-family:'Montserrat',sans-serif;letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--marrom)}
+.dark .footer .nome,.brown .footer .nome{color:var(--creme)}
+.swirl{position:absolute;pointer-events:none;z-index:1}
+.swirl.top{top:0;right:0;width:min(100%,640px);opacity:1}
+.swirl.bottom{bottom:0;left:0;width:100%;opacity:.5}
+.btn{display:inline-block;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:13px;padding:18px 34px;border-radius:999px;border:0;background:var(--creme);color:var(--roxo);cursor:pointer;text-decoration:none;transition:transform .15s,opacity .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn.solid{background:var(--roxo);color:var(--creme)}
+.btn.ghost{background:transparent;border:1px solid var(--areia);color:var(--roxo)}
+/* intro list */
+.steps{border-top:1px solid var(--linha);margin:8px 0 32px}
+.steps li{list-style:none;display:flex;gap:28px;align-items:center;padding:22px 0;border-bottom:1px solid var(--linha);font-size:17px}
+.steps .n{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--areia);width:28px}
+/* progress */
+.progress{height:3px;background:var(--linha);border-radius:3px;margin:-16px 0 36px;overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:var(--areia);transition:width .4s}
+.pill{display:inline-block;background:var(--lilas);color:#3f3340;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:10px 22px;border-radius:999px;margin:28px 0 8px}
+.q{display:flex;gap:18px;align-items:center;padding:24px 0;border-bottom:1px solid var(--linha)}
+.q .num{flex:none;width:40px;height:40px;border-radius:50%;background:var(--roxo);color:#fff;display:grid;place-items:center;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:500}
+.q p{flex:1;font-size:17px}
+.opts{display:flex;gap:10px;flex:none}
+.opt{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.16em;color:var(--marrom)}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .box{width:38px;height:38px;border:2px solid var(--areia);border-radius:10px;display:grid;place-items:center;transition:.15s;background:transparent}
+.opt input:checked + .box{background:var(--roxo);border-color:var(--roxo)}
+.opt input:checked + .box::after{content:"✓";color:#fff;font-size:18px;line-height:1}
+.opt input:focus-visible + .box{outline:3px solid var(--lilas);outline-offset:2px}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:32px;align-items:center}
+.hint{font-size:14px;color:var(--marrom);opacity:.8}
+/* capture */
+.field{margin:18px 0}
+.field label{display:block;font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--marrom);margin-bottom:8px}
+.field input[type=text],.field input[type=email]{width:100%;padding:16px 18px;font:inherit;font-size:17px;border:1.5px solid var(--areia);border-radius:12px;background:#fff;color:var(--texto)}
+.field input:focus{outline:3px solid var(--lilas);border-color:var(--roxo)}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:14px;margin:18px 0}
+.consent input{margin-top:5px;accent-color:var(--roxo);width:18px;height:18px;flex:none}
+.hp{position:absolute;left:-9999px;opacity:0}
+.err{color:#9b2c2c;font-size:14px;margin-top:10px;min-height:20px}
+/* result */
+.card{border-radius:24px;padding:36px;margin:28px 0;display:flex;gap:32px;align-items:center}
+.card .big{font-family:'Cormorant Garamond',serif;font-size:84px;line-height:1;flex:none;min-width:110px}
+.card h3{font-family:'Montserrat',sans-serif;font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
+.card .sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;margin-bottom:8px}
+.card p{font-size:16.5px}
+.card.verde{border:1.5px solid var(--areia);background:transparent;color:var(--texto)}
+.card.verde .big,.card.verde h3{color:var(--roxo)}
+.card.alerta{background:var(--marrom);color:var(--creme)}
+.card.alerta .big{color:var(--creme)}
+.card.critica{background:var(--marrom);color:var(--creme)}
+.score-line{font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--marrom)}
+.quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:28px;line-height:1.2;margin:24px 0}
+.cta{background:var(--roxo);color:var(--creme);border-radius:28px;padding:44px 36px;margin-top:40px}
+.cta h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,7vw,48px);line-height:1.08;margin-bottom:20px;color:var(--creme)}
+.cta p{margin-bottom:18px;font-size:17px}
+.cta strong{color:#fff}
+.soft-cta{margin-top:32px;font-size:16px;text-align:center}
+.soft-cta a{color:var(--roxo);font-weight:700}
+@media(max-width:560px){
+  .q{flex-wrap:wrap}.q p{flex-basis:calc(100% - 60px)}
+  .opts{margin-left:58px}
+  .card{flex-direction:column;align-items:flex-start;gap:10px;padding:28px}
+  .cta{padding:34px 24px}
+}
+@media(prefers-reduced-motion:reduce){.screen.active{animation:none}.progress i{transition:none}}
+</style>
+</head>
+<body>
+
+<!-- SVG reutilizável do traço decorativo -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="swirl-top" viewBox="0 0 640 440">
+      <path d="M 290 0 C 300 40 270 75 215 70 C 170 66 175 25 220 24 C 260 24 290 50 300 85 C 330 190 340 240 440 290 C 520 330 600 340 700 330 M 480 175 C 380 185 345 245 400 305 C 470 385 620 415 700 410" fill="none" stroke="#BC9C7C" stroke-width="3" stroke-linecap="round" transform="translate(-60 0)"/>
+    </symbol>
+    <symbol id="swirl-bottom" viewBox="0 0 960 240">
+      <path d="M 0 210 C 60 225 140 205 150 150 C 160 100 85 80 70 130 C 60 170 120 190 200 205 C 400 240 560 215 700 160 C 790 120 780 40 720 30 C 670 22 640 70 680 110 C 730 160 840 190 960 180" fill="none" stroke="#BC9C7C" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- 1. CAPA -->
+<section class="screen dark active" id="s-capa">
+  <svg class="swirl top" aria-hidden="true"><use href="#swirl-top"/></svg>
+  <div class="wrap" style="justify-content:flex-end;padding-bottom:56px">
+    <div class="eyebrow" style="opacity:.85;margin-bottom:28px">Material gratuito · Autoavaliação</div>
+    <h1 class="serif">Raio-X<br>da rotina<br>funcional</h1>
+    <p class="italic" style="font-size:clamp(24px,5vw,32px);margin:36px 0 44px">O diagnóstico do seu ecossistema de aprovação</p>
+    <div><button class="btn" data-go="s-intro">Começar o raio-x</button></div>
+    <div style="margin-top:56px">
+      <div class="eyebrow" style="font-size:14px">Pietra Rodrigues</div>
+      <div style="font-size:15px;opacity:.85">Cada rotina é única, inclusive a sua.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. INTRO -->
+<section class="screen" id="s-intro">
+  <div class="wrap">
+    <div class="topbar"><span>Raio-X da rotina funcional</span><span></span></div>
+    <div class="eyebrow" style="color:var(--marrom);margin-bottom:20px">Antes de começar</div>
+    <h2 class="serif">Um raio-x honesto,<br>sem julgamento.</h2>
+    <p class="lead">Este é um material de autoavaliação rápido, <strong>feito para quem já estuda há algum tempo</strong>, concilia o projeto com trabalho ou outras responsabilidades e sente que a nota estagnou.</p>
+    <ol class="steps">
+      <li><span class="n">1</span><span>Leia cada afirmação e responda <strong>Sim</strong> ou <strong>Não</strong>.</span></li>
+      <li><span class="n">2</span><span>Pense na sua realidade das <strong>últimas duas semanas</strong>, não na rotina ideal.</span></li>
+      <li><span class="n">3</span><span>No final, <strong>some seus “Sim”</strong> e descubra em qual zona está o seu ecossistema.</span></li>
+    </ol>
+    <div><button class="btn solid" data-go="s-q0">Vamos lá</button></div>
+    <div class="footer"><span class="nome">Pietra Rodrigues</span><span>Cada rotina é única, inclusive a sua.</span></div>
+  </div>
+</section>
+
+<!-- 3. PERGUNTAS (geradas por JS) -->
+<div id="questions"></div>
+
+<!-- 4. CAPTURA -->
+<section class="screen" id="s-capture">
+  <div class="wrap">
+    <div class="topbar"><span>Raio-X da rotina funcional</span><span>Quase lá</span></div>
+    <div class="progress"><i style="width:100%"></i></div>
+    <div class="eyebrow" style="color:var(--marrom);margin-bottom:20px">Seu resultado está pronto</div>
+    <h2 class="serif">Para onde enviamos o seu diagnóstico?</h2>
+    <p class="lead" style="margin-bottom:12px">Você verá o resultado na tela e também receberá uma cópia por e-mail.</p>
+    <form id="form" novalidate>
+      <div class="field"><label for="nome">Seu nome</label><input type="text" id="nome" autocomplete="given-name" required></div>
+      <div class="field"><label for="email">Seu melhor e-mail</label><input type="email" id="email" autocomplete="email" required></div>
+      <input class="hp" type="text" id="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="consent"><input type="checkbox" id="consent"><span>Concordo em receber meu resultado por e-mail e que minhas respostas sejam armazenadas para fins de análise e contato, conforme a LGPD.</span></label>
+      <div class="err" id="err" role="alert"></div>
+      <div class="nav"><button type="button" class="btn ghost" id="back-capture">Voltar</button><button type="submit" class="btn solid" id="send">Ver meu resultado</button></div>
+    </form>
+    <div class="footer"><span class="nome">Pietra Rodrigues</span><span>Cada rotina é única, inclusive a sua.</span></div>
+  </div>
+</section>
+
+<!-- 5. RESULTADO -->
+<section class="screen" id="s-result">
+  <div class="wrap">
+    <div class="topbar"><span>Raio-X da rotina funcional</span><span>Resultado</span></div>
+    <div class="eyebrow" style="color:var(--marrom);margin-bottom:20px">Seu resultado</div>
+    <h2 class="serif" id="r-title"></h2>
+    <div class="score-line" id="r-score" style="margin-top:18px"></div>
+    <div id="r-body"></div>
+    <div id="r-cta"></div>
+    <div class="footer"><span class="nome">Pietra Rodrigues · @rumoaoprimeirocargo</span><span>Cada rotina é única, inclusive a sua.</span></div>
+  </div>
+</section>
+
+<script>
+/* ============ CONFIGURAÇÃO ============ */
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxx4FIOGh_fPsmQceHGVkUVuBFACyt6xVA6EMFBFO9I1apsWDDVJt1VeOc-1wdGg178Qg/exec";
+const FORM_URL = "https://form.respondi.app/2Rv8QOr3";
+/* ====================================== */
+
+const GRUPOS = [
+  { nome:"Gestão de energia", itens:[
+    "Acordo cansada na maioria dos dias e dependo de estímulos (café, energético) para não “apagar” durante o estudo.",
+    "Minha alimentação durante a semana é reativa: como o que é mais rápido e prático, não o que me dá energia sustentável." ]},
+  { nome:"Trabalho e carga mental", itens:[
+    "A carga do meu trabalho me deixa tão exausta que, quando sento para estudar, minha mente já está esgotada.",
+    "Passo grande parte do meu dia sentindo culpa pelo que não estudei ou ansiedade pelo que ainda falta fechar no edital." ]},
+  { nome:"Rede de apoio e ambiente", itens:[
+    "Enfrento atritos frequentes com minha família ou parceiro(a) por causa da minha ausência ou do estresse gerado pelos estudos.",
+    "Meu ambiente de estudo sofre interrupções constantes e sinto que não tenho um “limite” claro entre minha vida pessoal e o concurso." ]},
+  { nome:"Tomada de decisão", itens:[
+    "Sinto que gasto muita energia decidindo o que estudar a cada dia, em vez de apenas sentar e executar uma estratégia que já está pronta." ]},
+  { nome:"Platô estratégico", itens:[
+    "Minha nota nos simulados e baterias de questões travou na casa dos 70% a 80% e não sobe, não importa quantas horas a mais eu estude.",
+    "Quando tenho um imprevisto e não consigo cumprir a meta do dia, não sei como recalcular a rota no dia seguinte e acabo me frustrando.",
+    "Meu estudo hoje é focado em “vencer o PDF”, mas não tenho clareza sobre meus pontos de fragilidade nem sobre como mapear meus erros ativamente." ]}
+];
+const TOTAL_Q = GRUPOS.reduce((a,g)=>a+g.itens.length,0);
+const respostas = new Array(TOTAL_Q).fill(null);
+
+/* Monta as telas de perguntas */
+(function build(){
+  const root = document.getElementById("questions");
+  let idx = 0;
+  GRUPOS.forEach((g,gi)=>{
+    const sec = document.createElement("section");
+    sec.className = "screen"; sec.id = "s-q"+gi;
+    const pct = Math.round((gi/GRUPOS.length)*100);
+    let html = `<div class="wrap">
+      <div class="topbar"><span>Raio-X da rotina funcional</span><span>${String(gi+1).padStart(2,"0")} / ${String(GRUPOS.length).padStart(2,"0")}</span></div>
+      <div class="progress"><i style="width:${pct}%"></i></div>
+      <p class="italic" style="font-size:clamp(24px,5vw,30px);color:var(--roxo)">Responda Sim ou Não com base nas últimas duas semanas.</p>
+      <span class="pill">${g.nome}</span>`;
+    g.itens.forEach(txt=>{
+      const i = idx++;
+      html += `<div class="q" role="group" aria-labelledby="qt${i}">
+        <span class="num">${i+1}</span><p id="qt${i}">${txt}</p>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q${i}" value="Sim"><span class="box"></span>SIM</label>
+          <label class="opt"><input type="radio" name="q${i}" value="Não"><span class="box"></span>NÃO</label>
+        </div></div>`;
+    });
+    const last = gi === GRUPOS.length-1;
+    html += `<div class="nav">
+        <button class="btn ghost" data-back="${gi===0?'s-intro':'s-q'+(gi-1)}">Voltar</button>
+        <button class="btn solid" data-next="${last?'s-capture':'s-q'+(gi+1)}" data-group="${gi}" disabled>${last?'Concluir':'Continuar'}</button>
+      </div>
+      <div class="hint" id="hint${gi}" style="margin-top:14px;text-align:right"></div>
+      <div class="footer"><span class="nome">Pietra Rodrigues</span><span>Cada rotina é única, inclusive a sua.</span></div>
+    </div>`;
+    sec.innerHTML = html;
+    root.appendChild(sec);
+  });
+})();
+
+function show(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+/* grupo -> índices das perguntas */
+function rangeOf(gi){
+  let start=0; for(let k=0;k<gi;k++) start+=GRUPOS[k].itens.length;
+  return [start, start+GRUPOS[gi].itens.length];
+}
+function refresh(gi){
+  const [a,b]=rangeOf(gi);
+  const done = respostas.slice(a,b).every(v=>v!==null);
+  const btn = document.querySelector(`[data-group="${gi}"]`);
+  btn.disabled = !done;
+  document.getElementById("hint"+gi).textContent = done ? "" : "Responda todas as afirmações para continuar.";
+}
+document.addEventListener("change",e=>{
+  const m = e.target.name && e.target.name.match(/^q(\d+)$/);
+  if(!m) return;
+  const i = +m[1]; respostas[i] = e.target.value;
+  let gi=0,acc=0; while(i>=acc+GRUPOS[gi].itens.length){acc+=GRUPOS[gi].itens.length;gi++}
+  refresh(gi);
+});
+document.addEventListener("click",e=>{
+  const t = e.target.closest("[data-go],[data-next],[data-back]");
+  if(!t || t.disabled) return;
+  show(t.dataset.go || t.dataset.next || t.dataset.back);
+});
+document.querySelectorAll("[id^=hint]").forEach((_,gi)=>refresh(gi));
+document.getElementById("back-capture").onclick = ()=>show("s-q"+(GRUPOS.length-1));
+
+/* Resultado */
+function zona(total){
+  if(total<=2) return "sustentavel";
+  if(total<=5) return "alerta";
+  return "critica";
+}
+function renderResultado(total, nome){
+  const z = zona(total);
+  const primeiro = (nome||"").trim().split(" ")[0];
+  document.getElementById("r-title").textContent = primeiro ? primeiro+", este é o seu raio-x." : "Este é o seu raio-x.";
+  document.getElementById("r-score").textContent = `Você respondeu “Sim” ${total} ${total===1?"vez":"vezes"} de ${TOTAL_Q}`;
+  let body="";
+  if(z==="sustentavel"){
+    body = `<div class="card verde"><div class="big">0–2</div><div>
+      <h3>Ecossistema sustentável</h3>
+      <p>Sua rotina está alinhada: o seu ecossistema sustenta a sua carga de estudos. O foco agora é o ajuste fino das métricas de questões e a manutenção da constância até a prova.</p></div></div>`;
+  } else if(z==="alerta"){
+    body = `<div class="card alerta"><div class="big">3–5</div><div>
+      <h3>Zona de alerta</h3><div class="sub">Vazamento de energia</div>
+      <p>Seu estudo está sendo sustentado pela força de vontade e pela disciplina bruta. Você até avança, mas o custo mental está altíssimo, e a chance de esgotar antes da prova ou travar num platô de acertos é grande. Está na hora de parar de focar só no material e começar a organizar os seus bastidores.</p></div></div>`;
+  } else {
+    body = `<div class="card critica" style="display:block;padding:44px 36px">
+      <div class="big" style="color:var(--areia);font-size:96px">6+</div>
+      <h3 style="margin-top:12px">Zona crítica</h3>
+      <div class="serif" style="font-size:clamp(34px,7vw,46px);margin:6px 0 20px;color:var(--creme)">O chassi está quebrando.</div>
+      <p>Você está tentando colocar um motor de Ferrari (a meta de passar em um concurso de alto nível) em um chassi que não suporta a pressão (uma rotina caótica). Continuar forçando horas líquidas nesse cenário só gera ansiedade e reprovação.</p>
+      <div class="quote">O seu problema não é falta de inteligência nem material ruim. É estrutural.</div>
+      <p>E cada mês estudando assim é um mês a mais de salário que você deixa de ganhar.</p></div>`;
+  }
+  document.getElementById("r-body").innerHTML = body;
+
+  const cta = document.getElementById("r-cta");
+  if(total>=3){
+    cta.innerHTML = `<div class="cta">
+      <h2>Pontuou 3 ou mais? Esse é o momento de agir.</h2>
+      <p>Se você entendeu que precisa de ajuda profissional para organizar a engrenagem da sua vida, tirar o peso das suas costas e desenhar uma estratégia que respeita a sua realidade como adulta que ocupa outras funções na vida além do estudo, preencha o formulário de aplicação.</p>
+      <p>Se o seu perfil for aprovado, minha equipe entrará em contato para agendarmos uma <strong>Análise Estratégica de 1 hora</strong>.</p>
+      <a class="btn" href="${FORM_URL}" target="_blank" rel="noopener">Preencher o formulário</a></div>`;
+  } else {
+    cta.innerHTML = `<p class="soft-cta">Quer conversar sobre a sua estratégia mesmo assim? <a href="${FORM_URL}" target="_blank" rel="noopener">Acesse o formulário de aplicação</a>.</p>`;
+  }
+}
+
+/* Envio */
+document.getElementById("form").addEventListener("submit", async e=>{
+  e.preventDefault();
+  const nome = document.getElementById("nome").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const consent = document.getElementById("consent").checked;
+  const err = document.getElementById("err");
+  err.textContent = "";
+  if(nome.length<2){ err.textContent="Informe seu nome."; return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ err.textContent="Informe um e-mail válido."; return; }
+  if(!consent){ err.textContent="Marque o consentimento para receber o resultado."; return; }
+
+  const total = respostas.filter(v=>v==="Sim").length;
+  const payload = { nome, email, respostas, total, website: document.getElementById("website").value };
+  const btn = document.getElementById("send");
+  btn.disabled = true; btn.textContent = "Enviando…";
+
+  if(APPS_SCRIPT_URL.startsWith("COLE_AQUI")){
+    console.warn("APPS_SCRIPT_URL não configurada: modo de teste, nada foi enviado.");
+  } else {
+    try{
+      await Promise.race([
+        fetch(APPS_SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)}),
+        new Promise(r=>setTimeout(r,8000))
+      ]);
+    }catch(_){ /* mostramos o resultado mesmo assim */ }
+  }
+  renderResultado(total, nome);
+  show("s-result");
+  btn.disabled=false; btn.textContent="Ver meu resultado";
+});
+</script>
+</body>
+</html>
