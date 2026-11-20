@@ -94,3 +94,14 @@ que copia `index.html` para `dec/index.html` e `404.html` e publica a pasta
   código-fonte da página. Para protegê-lo é preciso mover a chamada para um
   backend/função serverless.
 - As rotas antigas `/alinhamento` e `/combo-tjsc` deixaram de existir.
+
+## Página de vendas do curso (`/curso/`)
+
+`site/curso/index.html` — página única e autocontida (CSS e JS inline), como o `/raio-x/`.
+Conteúdo seguindo o briefing "Descomplicando os Estudos para Concurso".
+
+- **Link do checkout e ids de rastreamento:** objeto `CONFIG` no final do arquivo. Todos os botões `.js-checkout` são preenchidos por ele (UTMs repassadas).
+- **Rastreamento:** Meta Pixel / GA4 estão como placeholder comentado no `<head>`; o clique dispara `InitiateCheckout` se o Pixel estiver carregado.
+- **Depoimentos:** seção `#depoimentos` está com `hidden`. Remova o atributo e preencha os cartões com depoimentos reais autorizados.
+- **Garantia:** seção `#garantia` está com `hidden`. Só ativar após confirmar a política de reembolso na Kiwify (e ativar o item "Tem garantia?" do FAQ).
+- **Pendências (buscar `TODO` no arquivo):** texto da Pietra em 1ª pessoa, imagem Open Graph 1200×630, parcelamento/meios de pagamento, acesso e suporte, ids de Pixel/GA4, textos de `/politica-de-privacidade/` e `/termos-de-uso/`.
