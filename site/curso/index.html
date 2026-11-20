@@ -169,9 +169,12 @@ main{padding-top:64px}
 .selos span{border:1px solid rgba(249,247,236,.45);border-radius:999px;padding:6px 16px}
 
 /* depoimentos / garantia (ocultos) */
-.depos{display:grid;gap:18px;margin-top:30px}
-.depo{background:var(--offwhite);border-radius:18px;padding:24px}
-.depo cite{display:block;margin-top:12px;font-style:normal;font-weight:600;color:var(--roxo)}
+.depos{display:grid;gap:18px;margin-top:30px;max-width:920px;margin-left:auto;margin-right:auto}
+.depo{background:var(--offwhite);border-radius:18px;padding:24px;display:grid;gap:24px;align-items:center}
+.depo img{border-radius:14px;width:100%;max-width:340px;margin:0 auto;box-shadow:0 10px 26px rgba(104,81,63,.18)}
+.depo blockquote{font-size:16.5px}
+.depo mark{background:color-mix(in srgb,var(--lilas) 45%,transparent);color:inherit;padding:0 2px;border-radius:3px}
+.depo cite{display:block;margin-top:14px;font-style:normal;font-weight:600;color:var(--roxo);font-size:15px}
 
 /* faq */
 details{border-bottom:1px solid var(--linha)}
@@ -207,7 +210,7 @@ details .r{padding:0 0 22px;font-size:16px}
   .material{grid-template-columns:.8fr 1.2fr;gap:64px}
   .autora{grid-template-columns:.8fr 1.2fr;gap:56px}
   .duas{grid-template-columns:1fr 1fr}
-  .depos{grid-template-columns:repeat(3,1fr)}
+  .depo{grid-template-columns:.8fr 1.2fr;padding:32px;gap:36px}
   .passos{grid-template-columns:repeat(3,1fr)}
   .passos li{flex-direction:column}
   .fixo{display:none}
@@ -377,10 +380,9 @@ details .r{padding:0 0 22px;font-size:16px}
     <h2 id="h-como" class="center">Como funciona</h2>
     <ol class="passos">
       <li class="rev"><div><h3 style="color:var(--roxo)">Assista à aula</h3><p>Cerca de 10 minutos.</p></div></li>
-      <li class="rev"><div><h3 style="color:var(--roxo)">Faça o exercício prático</h3><p>Logo depois da aula. Cada aula tem um.</p></div></li>
-      <li class="rev"><div><h3 style="color:var(--roxo)">Mande sua devolutiva</h3><p>Para a Pietra, pelo WhatsApp ou Direct.</p></div></li>
+      <li class="rev"><div><h3 style="color:var(--roxo)">Faça o exercício prático</h3><p>Logo depois da aula, teremos uma atividade. Cada aula tem a sua.</p></div></li>
+      <li class="rev"><div><h3 style="color:var(--roxo)">Mande sua devolutiva</h3><p>Para a Pietra, pelo direct do Instagram ou comentários diretamente no curso.</p></div></li>
     </ol>
-    <!-- TODO: confirmar com a Pietra se o suporte por WhatsApp/Direct é benefício oficial e qual o prazo de resposta antes de prometer qualquer prazo. -->
   </div>
 </section>
 
@@ -393,7 +395,7 @@ details .r{padding:0 0 22px;font-size:16px}
       <h2 id="h-pietra">Eu criei este curso como o guia que eu gostaria de ter tido.</h2>
       <!-- TODO: texto da Pietra (parágrafo em primeira pessoa para substituir o texto-base abaixo) -->
       <p>Servidora pública desde 2021 e mentora de concursos, com foco em organização, estratégia de prova e rotina.</p>
-      <p>Conciliou trabalho com a graduação em Engenharia Química, teve a coragem de recomeçar do zero na 7ª fase e conquistou duas nomeações em cenários de pós-edital de 3 e 4 meses.</p>
+      <p>Conciliei trabalho com a graduação em Engenharia Química, tive a coragem de recomeçar do zero na 7ª fase e conquistei duas nomeações em cenários de pós-edital de 3 e 4 meses.</p>
       <p><em>“Economize anos de estudo e seja nomeada.”</em></p>
       <a class="insta" href="https://www.instagram.com/rumoaoprimeirocargo/" rel="noopener" target="_blank">@rumoaoprimeirocargo no Instagram</a>
     </div>
@@ -424,14 +426,19 @@ details .r{padding:0 0 22px;font-size:16px}
   </div>
 </section>
 
-<!-- 6.12 PROVA SOCIAL — OCULTA ATÉ HAVER DEPOIMENTOS REAIS.
-     Para ativar: apague o atributo "hidden" da <section> abaixo, duplique o <figure class="depo"> por depoimento
-     e preencha texto, nome e cargo/concurso (com autorização de uso). Nunca publique depoimentos inventados. -->
-<section class="bg-lilas" id="depoimentos" aria-labelledby="h-depo" hidden>
+<!-- 6.12 PROVA SOCIAL — só depoimentos reais, com autorização de uso. Nunca publique depoimentos inventados.
+     Para adicionar outro: duplique o <figure class="depo"> (print em site/curso/, texto transcrito e a origem). -->
+<section class="bg-lilas" id="depoimentos" aria-labelledby="h-depo">
   <div class="container">
-    <h2 id="h-depo" class="center">Quem já passou por aqui</h2>
+    <h2 id="h-depo" class="center">O que dizem depois de assistir</h2>
     <div class="depos">
-      <figure class="depo"><blockquote>TODO: texto do depoimento</blockquote><cite>TODO: nome · cargo/concurso</cite></figure>
+      <figure class="depo rev">
+        <img src="depoimento-1.jpg" alt="Print de mensagem no WhatsApp com o depoimento transcrito ao lado" width="708" height="720" loading="lazy">
+        <div>
+          <blockquote>“Eu vi o vídeo e ele foi incrível, me fez abrir os olhos a um problema que eu sinto que eu não olho direito. Eu faço as questões e coloco no Anki, mas eu não verdadeiramente olho para as questões. <mark>Eu não analiso o que eu errei direito. Isso abriu meus olhos para entender melhor qual o meu problema.</mark> Vou passar a anotar como você mostrou e fazer um relatório da semana, não só do simulado, mas também dos exercícios e dos tópicos estudados na semana.”</blockquote>
+          <cite>Mensagem recebida pelo WhatsApp</cite>
+        </div>
+      </figure>
     </div>
   </div>
 </section>
@@ -473,7 +480,7 @@ details .r{padding:0 0 22px;font-size:16px}
     <details><summary>Quanto tempo dura cada aula?</summary><div class="r">Cerca de 10 minutos.</div></details>
     <details><summary>Como acesso o curso depois de comprar?</summary><div class="r">Pela plataforma Kiwify, com o acesso enviado após a confirmação do pagamento. <!-- TODO: confirmar e-mail/área de membros e prazo de acesso --></div></details>
     <details><summary>Quais as formas de pagamento?</summary><div class="r">Definidas no checkout seguro da Kiwify. <!-- TODO: listar meios após confirmar --></div></details>
-    <details><summary>Posso tirar dúvidas com a Pietra?</summary><div class="r"><!-- TODO: confirmar canal de suporte --> Cada aula tem um exercício prático, e a devolutiva é enviada para a Pietra pelo WhatsApp ou Direct.</div></details>
+    <details><summary>Posso tirar dúvidas com a Pietra?</summary><div class="r">Sim. Você pode mandar suas dúvidas pelo Direct do Instagram (<a href="https://www.instagram.com/rumoaoprimeirocargo/" rel="noopener" target="_blank">@rumoaoprimeirocargo</a>) ou deixar um comentário diretamente na aula, dentro da plataforma do curso.</div></details>
     <!-- Ativar junto com a seção #garantia:
     <details><summary>Tem garantia?</summary><div class="r">Sim, de 7 dias. Veja a seção de garantia acima.</div></details> -->
   </div>

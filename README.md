@@ -102,6 +102,6 @@ Conteúdo seguindo o briefing "Descomplicando os Estudos para Concurso".
 
 - **Link do checkout e ids de rastreamento:** objeto `CONFIG` no final do arquivo. Todos os botões `.js-checkout` são preenchidos por ele (UTMs repassadas).
 - **Rastreamento:** Meta Pixel / GA4 estão como placeholder comentado no `<head>`; o clique dispara `InitiateCheckout` se o Pixel estiver carregado.
-- **Depoimentos:** seção `#depoimentos` está com `hidden`. Remova o atributo e preencha os cartões com depoimentos reais autorizados.
+- **Depoimentos:** seção `#depoimentos` (ativa). Para adicionar outro, salve o print em `site/curso/` e duplique o `<figure class="depo">`. Só depoimentos reais e autorizados.
 - **Garantia:** seção `#garantia` está com `hidden`. Só ativar após confirmar a política de reembolso na Kiwify (e ativar o item "Tem garantia?" do FAQ).
 - **Pendências (buscar `TODO` no arquivo):** texto da Pietra em 1ª pessoa, imagem Open Graph 1200×630, parcelamento/meios de pagamento, acesso e suporte, ids de Pixel/GA4, textos de `/politica-de-privacidade/` e `/termos-de-uso/`.
